@@ -1,3 +1,7 @@
+---
+sidebar: 'heading'
+---
+
 # 将博客部署到GitHub Pages
 
 - 书接上回，我们使用`VuePress`生成了一个**`仅供本地访问的博客`**，接下来就是将博客部署到服务器上了，本文记录了部署到`GitHub Pages`的过程。

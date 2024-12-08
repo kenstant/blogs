@@ -1,3 +1,7 @@
+---
+sidebar: 'heading'
+---
+
 # 使用VuePress搭建博客
 
 本文记录一下使用`VuePress`搭建博客的过程，其实VuePress官网有，我也是根据官方文档来做的。

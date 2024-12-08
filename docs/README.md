@@ -1,5 +1,25 @@
-# Hello VuePress
+---
+title: '首页'
+# date: '2024-12-04 10:23:01'
+# description: '博客首页'
+---
 
-[使用VuePress搭建博客](./搭建博客/使用VuePress搭建博客.md)
+<br>
 
-[将博客部署到GitHub Pages](./搭建博客/将博客部署到GitHub%20Pages.md)
+> 飞光飞光，劝尔一杯酒。<br>
+吾不识青天高，黄地厚。<br>
+唯见月寒日暖，来煎人寿。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;——李贺《苦昼短》
+
+
+<br><br><br>
+## 目录
+
+- ### [搭建博客](./搭建博客/README.md)
+
+![Logo](/images/mylogo.png)
+
+
+<br><br><br>
+## 和我联系
+**邮箱**：xzhm00@163.com
