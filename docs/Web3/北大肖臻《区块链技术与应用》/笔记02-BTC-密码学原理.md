@@ -1,0 +1,13 @@
+- `crypto currency`：加密货币
+- 比特币中主要用到密码学中两个功能：
+  - 哈希
+  - 签名
+- 密码学中用到的哈希函数被称为：`cryptographic hash function`，有两个重要性质：
+  - `collision resistance`：不是说不会出现hash碰撞，而是说没有什么高效的方法人为的制造哈希碰撞。
+  - `hiding`：哈希函数的计算过程是单向的，不可逆的。
+  - 两者结合起来可以实现：`digital commitment`，又叫`digital equivalent ofa sealed envelope`。
+  - 比特币中用到的第三个性质：`puzzle friendly`：哈希值的计算事先是不可预测的。可以用来做`proof of work`（工作量证明）。挖矿很难，但是证明很容易。`difficult to solve，but easy to verify`。
+- 比特币中用的哈希函数：`SHA-256`。`SHA`即`secure hash algorithm`。
+  - `asymmetric encryption algorithm`：非对称加密算法。
+- 比特币中账户系统，本地创建一个公钥私钥的密钥对即可。用私钥对交易进行签名，然后别人用公钥对交易进行验证。
+  - 比特币中一般是对一个message先进行hash，然后对hash值进行签名。
