@@ -97,10 +97,22 @@ dist
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
 
-# vuepress build output
+# VuePress build output (legacy)
 .vuepress/dist
+.vuepress/.temp
+.vuepress/.cache
 
-# vuepress v2.x temp and cache directory
+# VitePress build output
+.vitepress/dist
+.vitepress/.temp
+.vitepress/.cache
+.vitepress/cache
+**/.vitepress/cache
+**/.vitepress/.cache
+**/.vitepress/dist
+**/.vitepress/.temp
+
+# temp and cache directory
 .temp
 .cache
 
@@ -128,9 +140,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-# VuePress 默认临时文件目录
-.vuepress/.temp
-# VuePress 默认缓存目录
-.vuepress/.cache
-# VuePress 默认构建生成的静态文件目录
-.vuepress/dist
+
+
+.idea/
+.DS_Store

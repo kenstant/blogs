@@ -1,20 +1,17 @@
 {
-  "name": "vuepress-my-blogs",
+  "name": "vitepress-my-blogs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.18",
-    "@vuepress/theme-default": "2.0.0-rc.61",
-    "sass-embedded": "^1.81.0",
-    "vue": "^3.5.13",
-    "vuepress": "2.0.0-rc.18"
+    "sass": "^1.81.0",
+    "vitepress": "^1.6.4"
   }
 }
