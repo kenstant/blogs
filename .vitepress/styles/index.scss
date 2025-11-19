@@ -155,3 +155,19 @@ body:has(.home-container) .VPFooter {
   display: none !important;
 }
 
+// 确保首页内容居中
+body:has(.home-container) .VPContent .content {
+  text-align: center !important;
+}
+
+// 确保首页容器在内容区域中居中
+body:has(.home-container) .vp-doc {
+  max-width: none !important;
+}
+
+// 确保首页容器本身居中
+body:has(.home-container) .home-container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+

@@ -40,7 +40,7 @@ export default defineConfig({
         
         // 页脚
         footer: {
-            message: '飞光飞光，劝尔一杯酒。',
+            message: "联系邮箱：xzhm00@163.com",
             copyright: 'Copyright © 2024'
         },
         
@@ -69,26 +69,15 @@ export default defineConfig({
         ['link', { rel: 'manifest', href: '/icons/site.webmanifest' }]
     ],
     
-    // Markdown 配置 - 使其更接近 Typora 的解析效果
-    markdown: {
-        // 代码块行号
-        lineNumbers: true,
-        
-        // 图片配置
-        image: {
-            // 懒加载图片
-            lazyLoading: true
-        },
-        
-        // 自定义 markdown-it 配置
-        config: (md) => {
-            
-            // 注意：VitePress 默认已支持以下 GFM 特性：
-            // - 任务列表（- [ ] 和 - [x]）
-            // - 表格
-            // - 删除线（~~text~~）
-            // - 自动链接
-            // - 代码块语法高亮
+    
+    // Vite 配置 - 解决 Sass 弃用警告
+    vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler' // 使用新的 Sass API
+                }
+            }
         }
     }
 })
