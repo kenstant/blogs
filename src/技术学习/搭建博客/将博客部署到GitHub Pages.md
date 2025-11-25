@@ -59,9 +59,9 @@ sidebar: 'heading'
 
 ### 2.3 创建本地仓库并关联远程仓库
 
-- 进入本地VuePress项目目录(有`packaeg.json`的目录），我这里是`[前缀]/vuepress-my-blogs`，请将`[前缀]`替换为你自己的路径。
+- 进入本地VuePress项目目录(有`package.json`的目录），我这里是`[前缀]/vuepress-my-blogs`，请将`[前缀]`替换为你自己的路径。
 
-  ```bas
+  ```bash
   # cd /path/to/your/local/folder
   cd [前缀]/vuepress-my-blogs
   ```
@@ -160,7 +160,7 @@ git push --set-upstream origin main:main
 
 我们只需要写一个`workflows`文件，会自动触发`GitHub Actions`。
 
-- 进入本地VuePress项目目录(有`packaeg.json`的目录），我这里是`[前缀]/vuepress-my-blogs`，请将`[前缀]`替换为你自己的路径。
+- 进入本地VuePress项目目录(有`package.json`的目录），我这里是`[前缀]/vuepress-my-blogs`，请将`[前缀]`替换为你自己的路径。
 
 ```bash
 # cd /path/to/your/local/folder

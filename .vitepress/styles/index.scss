@@ -78,12 +78,7 @@ html:not(.dark) {
 }
 
 
-// 引入字体并设置全站基础字体
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-}
+// 使用 VitePress 默认字体，不自定义字体
 
 // VitePress 主题样式适配
 // 顶部导航：绿色背景 + 白色文字 + 下划线动效
@@ -144,14 +139,27 @@ html:not(.dark) {
   }
   
   // 首页容器背景色
-  .home-container {
+  .custom-home-container {
     background-color: transparent;
   }
 }
 
 // 隐藏首页的全局 VitePress footer
-// 当页面包含 home-container 时，隐藏全局 footer
-body:has(.home-container) .VPFooter {
-  display: none !important;
+// 当页面包含 custom-home-container 时，隐藏全局 footer
+
+// 确保首页内容居中
+body:has(.custom-home-container) .VPContent .content {
+  text-align: center !important;
+}
+
+// 确保首页容器在内容区域中居中
+body:has(.custom-home-container) .vp-doc {
+  max-width: none !important;
+}
+
+// 确保首页容器本身居中
+body:has(.custom-home-container) .custom-home-container {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
