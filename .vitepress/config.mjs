@@ -9,6 +9,10 @@ export default defineConfig({
     // 部署站点的基础配置
     base: base,
     
+    // 日志级别：'info' | 'warn' | 'error' | 'silent'
+    // 设置为 'warn' 可以减少控制台的配置层信息输出
+    logLevel: 'error',
+    
     // 忽略构建时的死链检查（迁移初期更方便）
     ignoreDeadLinks: true,
     

@@ -5,6 +5,8 @@ import DefaultTheme from 'vitepress/theme'
 // 导入我们自定义的首页布局组件
 import CustomHomeLayout from './layouts/CustomHomeLayout.vue'
 import CustomTocLayout from './layouts/CustomTocLayout.vue'
+// 导入返回按钮组件
+import BackButton from './components/BackButton.vue'
 // 导入全局样式文件
 import '../styles/index.scss'
 
@@ -22,7 +24,9 @@ export default {
         // - 第二个参数：属性对象（props、class、style、事件等）
         // - 第三个参数：子元素或插槽对象
         return h(DefaultTheme.Layout, null, {
-            //
+            // 悬浮返回按钮使用固定定位，可以在任何插槽中渲染
+            // 使用 layout-bottom 插槽，在所有内容之后渲染
+            'layout-bottom': () => h(BackButton),
         })
     },
     

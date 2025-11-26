@@ -12,46 +12,6 @@ $text-secondary: #666; // 次要文本色
   display: flex;
   flex-direction: column;
 
-  // 返回按钮样式
-  .custom-toc-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    margin-bottom: 24px;
-    color: $text-secondary;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    width: fit-content;
-    user-select: none;
-
-    .back-icon {
-      font-size: 18px;
-      font-weight: 600;
-      transition: transform 0.2s ease;
-    }
-
-    .back-text {
-      font-weight: 500;
-    }
-
-    &:hover {
-      color: $primary-color;
-      background: $light-primary;
-      transform: translateX(-2px);
-
-      .back-icon {
-        transform: translateX(-2px);
-      }
-    }
-
-    &:active {
-      transform: translateX(-1px);
-    }
-  }
-
   // 主题标题样式
   .custom-toc-topic {
     font-size: 36px;
@@ -171,14 +131,6 @@ $text-secondary: #666; // 次要文本色
 // 深色模式适配
 html.dark {
   .custom-toc-container {
-    .custom-toc-back {
-      color: var(--vp-c-text-2);
-
-      &:hover {
-        color: var(--vp-c-brand);
-        background: rgba(0, 102, 68, 0.15);
-      }
-    }
 
     .custom-toc-topic {
       background: var(--vp-c-bg-alt);
