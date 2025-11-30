@@ -124,7 +124,7 @@ export default defineUserConfig({
 
 ```bash
 # docs目录下的README.md文档会生成index.html，也就是首页
-echo '# 你好，欢迎来到首页' > docs/README.md
+echo '# 你好，欢迎来到首页' > docs/index.md
 ```
 
 

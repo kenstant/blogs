@@ -1,0 +1,119 @@
+// 导入共享变量
+@use "variables";
+
+// 自定义首页样式 - 不覆盖默认主题
+// 自定义首页容器
+.custom-home-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Hero 区域样式
+.custom-home-hero {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid rgba(0, 102, 68, 0.2);
+}
+
+.custom-home-name {
+  color: variables.$primary-color;
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0 0 12px 0;
+}
+
+.custom-home-text {
+  color: variables.$text-secondary;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+
+// Features 卡片区域样式
+.custom-home-features {
+  margin-bottom: 60px;
+}
+
+.custom-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.custom-feature-card {
+  padding: 32px 24px;
+  background: #fff;
+  border: 2px solid variables.$light-primary;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 0;
+    background: variables.$primary-color;
+    transition: height 0.3s ease;
+  }
+
+  &:hover {
+    border-color: variables.$primary-color;
+    box-shadow: 0 8px 24px variables.$light-primary;
+    transform: translateY(-4px);
+
+    &::before {
+      height: 100%;
+    }
+  }
+}
+
+.custom-card-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.custom-card-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: variables.$primary-color;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.custom-card-details {
+  font-size: 15px;
+  color: variables.$text-secondary;
+  margin: 0;
+  line-height: 1.6;
+}
+
+// 深色模式适配
+html.dark {
+  .custom-feature-card {
+    background: var(--vp-c-bg-alt);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .custom-home-text,
+  .custom-card-details {
+    color: var(--vp-c-text-2);
+  }
+}
+

@@ -1,9 +1,11 @@
-// 自定义样式：白天模式深绿色边框
+// 导入共享变量
+@use "variables";
+
+// ============================================
+// 响应式样式：仅在白天模式生效
+// ============================================
+// 以下样式只在 html:not(.dark) 时生效，切换为黑夜模式时会失效
 html:not(.dark) {
-  // 定义深绿色主题色
-  $green-color: #006644;
-  $green-color-light: #008855;
-  $green-color-dark: #004433;
 
   // VitePress 导航栏的边框与阴影（更明显）
   .VPNavBar {
@@ -24,13 +26,13 @@ html:not(.dark) {
 
   // 代码块的边框
   div[class*="language-"] {
-    border: 1px solid $green-color;
+    border: 1px solid variables.$primary-color;
     border-radius: 4px;
   }
 
   // 引用块的边框
   blockquote {
-    border-left: 4px solid $green-color;
+    border-left: 4px solid variables.$primary-color;
     background-color: rgba(0, 102, 68, 0.05);
   }
 
@@ -41,16 +43,16 @@ html:not(.dark) {
     &:hover {
       color: inherit;
       text-decoration: underline;
-      text-decoration-color: $green-color;
+      text-decoration-color: variables.$primary-color;
     }
   }
 
   // 表格边框
   table {
-    border: 1px solid $green-color;
+    border: 1px solid variables.$primary-color;
     
     th, td {
-      border: 1px solid $green-color;
+      border: 1px solid variables.$primary-color;
     }
     
     th {
@@ -60,7 +62,7 @@ html:not(.dark) {
 
   // 代码内联样式
   code {
-    color: $green-color-dark;
+    color: variables.$primary-color-dark;
     background-color: rgba(0, 102, 68, 0.1);
   }
 
@@ -78,17 +80,16 @@ html:not(.dark) {
 }
 
 
-// 引入字体并设置全站基础字体
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-}
+// ============================================
+// 固定样式：在所有主题模式下都生效
+// ============================================
+// 以下样式不随白天/黑夜主题切换而变化
 
 // VitePress 主题样式适配
 // 顶部导航：绿色背景 + 白色文字 + 下划线动效
+// 注意：使用 $primary-color，这是固定的品牌色，不会随主题变化
 .VPNavBar {
-  background-color: #006644 !important; // 与参考页一致的绿色
+  background-color: variables.$primary-color !important; // 固定品牌色，不随主题变化
   border-bottom: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
@@ -117,7 +118,7 @@ body {
 .VPContent .content a:hover {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: #006644;
+  text-decoration-color: variables.$primary-color;
 }
 
 // 适配 VitePress 的类名
@@ -128,9 +129,18 @@ body {
 .vp-doc a:hover {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: #006644;
+  text-decoration-color: variables.$primary-color;
 }
 
+// h2 标题前的分隔线颜色（全局设置，与主题色保持一致）
+// 注意：使用 $primary-color，这是固定的品牌色，不会随主题变化
+.vp-doc h2 {
+  border-top-color: variables.$primary-color !important;
+}
+
+// ============================================
+// 响应式样式：仅在白天模式生效
+// ============================================
 // 护眼优化：白天模式背景色和文字颜色
 html:not(.dark) {
   // 使用更柔和的背景色，减少屏幕反光
@@ -144,14 +154,27 @@ html:not(.dark) {
   }
   
   // 首页容器背景色
-  .home-container {
+  .custom-home-container {
     background-color: transparent;
   }
 }
 
 // 隐藏首页的全局 VitePress footer
-// 当页面包含 home-container 时，隐藏全局 footer
-body:has(.home-container) .VPFooter {
-  display: none !important;
+// 当页面包含 custom-home-container 时，隐藏全局 footer
+
+// 确保首页内容居中
+body:has(.custom-home-container) .VPContent .content {
+  text-align: center !important;
+}
+
+// 确保首页容器在内容区域中居中
+body:has(.custom-home-container) .vp-doc {
+  max-width: none !important;
+}
+
+// 确保首页容器本身居中
+body:has(.custom-home-container) .custom-home-container {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 

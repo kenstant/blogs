@@ -1,0 +1,120 @@
+@use "sass:color";
+@use "variables";
+
+// 返回按钮样式
+// 悬浮返回按钮容器
+.back-button-floating {
+  position: fixed;
+  // 参考页脚 prev/next 的位置，放在右下角
+  // 页脚在内容区域底部，我们放在右下角固定位置
+  bottom: 32px;
+  right: 32px;
+  z-index: 100;
+  pointer-events: none; // 让容器不阻挡点击，只有按钮本身可点击
+  
+  @media (max-width: 768px) {
+    bottom: 24px;
+    right: 24px;
+  }
+}
+
+// 悬浮球
+.floating-ball {
+  pointer-events: auto; // 恢复按钮的点击事件
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: variables.$primary-color;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 102, 68, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  .back-icon {
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .back-text {
+    position: absolute;
+    left: 100%;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s ease;
+    margin-left: 8px;
+  }
+  
+  // 悬浮时展开
+  &.expanded {
+    width: auto;
+    padding: 0 16px;
+    border-radius: 24px;
+    
+    .back-icon {
+      transform: translateX(-4px);
+    }
+    
+    .back-text {
+      position: static;
+      opacity: 1;
+      margin-left: 8px;
+    }
+  }
+  
+  &:hover {
+    background: color.adjust(variables.$primary-color, $lightness: -5%);
+    box-shadow: 0 6px 16px rgba(0, 102, 68, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 102, 68, 0.3);
+  }
+}
+
+// 响应式设计
+@media (max-width: 767px) {
+  .floating-ball {
+    width: 44px;
+    height: 44px;
+    
+    .back-icon {
+      font-size: 18px;
+    }
+    
+    &.expanded {
+      padding: 0 12px;
+      
+      .back-text {
+        font-size: 13px;
+        margin-left: 6px;
+      }
+    }
+  }
+}
+
+// 深色模式适配
+html.dark {
+  .floating-ball {
+    background: var(--vp-c-brand);
+    box-shadow: 0 4px 12px rgba(0, 102, 68, 0.4);
+    
+    &:hover {
+      background: var(--vp-c-brand-dark);
+      box-shadow: 0 6px 16px rgba(0, 102, 68, 0.5);
+    }
+  }
+}
+

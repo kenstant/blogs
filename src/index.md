@@ -1,44 +1,29 @@
 ---
-title: '首页'
+layout: CustomHomeLayout
+
+header:
+  name: "kenstant的博客"
+  text: "记录学习与思考"
+
+cards:
+  - title: 阅读笔记
+    details: 读书笔记、学习心得
+    icon: 📚
+    link: /阅读笔记/
+  - title: 技术学习
+    details: Web3、搭建博客、工作实践等
+    icon: 💻
+    link: /技术学习/
+  - title: 投资记录
+    details: 记录投资过程中的思考与复盘
+    icon: 📈
+    link: /投资记录/
+  - title: 英语学习
+    details: 常用短语、词汇积累等
+    icon: 🔤
+    link: /英语学习/
+  - title: 草稿
+    details: 未完成或未分类的文章
+    icon: 📝
+    link: /草稿/
 ---
-
-<style scoped>
-@import '../.vitepress/styles/home.scss';
-</style>
-
-<div class="home-container">
-
-<div class="home-hero">
-  <h1 class="home-title">kenstant 的博客</h1>
-  <p class="home-subtitle">记录学习与思考</p>
-</div>
-
-<div class="home-sections">
-
-<div class="sections-grid">
-  <!-- 计算机技术板块 -->
-  <a href="/计算机技术/" class="section-card">
-    <div class="card-icon">💻</div>
-    <h3>计算机技术</h3>
-    <p>搭建博客、工作问题排查、Web3、设计模式等</p>
-  </a>
-
-  <!-- 
-  添加新板块示例：
-  <a href="/数学/" class="section-card">
-    <div class="card-icon">📚</div>
-    <h3>数学</h3>
-    <p>数学学习笔记、解题思路等相关内容</p>
-  </a>
-  -->
-</div>
-
-</div>
-
-<div class="home-footer">
-  <p class="footer-poem">飞光飞光，劝尔一杯酒。</p>
-  <p class="footer-contact">联系邮箱：xzhm00@163.com</p>
-  <p class="footer-copyright">Copyright © 2024</p>
-</div>
-
-</div>

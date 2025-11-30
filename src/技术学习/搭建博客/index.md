@@ -4,7 +4,7 @@ date: 2024-12-08 14:30:01
 ---
 <br><br>
 
-- [回到首页](../README.md)
+- [回到首页](../../index.md)
 
 - [使用VuePress搭建博客](./使用VuePress搭建博客.md)
 

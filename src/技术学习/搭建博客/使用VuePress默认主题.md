@@ -46,7 +46,7 @@ export default {
 
 
 ### 顶部导航栏相关
-#### navar
+#### navbar
 - 顶部导航栏
 - 可选值:
     - `[]`: 默认值
@@ -91,32 +91,32 @@ export default {
     ```
 
 #### colorModeSwitch
-- 在顶部导航栏右边展示`白天`和`黑夜`模式的开关- navar为false时不展示
+- 在顶部导航栏右边展示`白天`和`黑夜`模式的开关- navbar为false时不展示
 
 #### logo
 - 顶部导航栏左边的logo
-- navar为false时不展示
+- navbar为false时不展示
 - 可选值: 
     - `null`: 禁用
     - `具体的url`: 站内外资源的url都可以
 
 #### logoDark
 - 夜间模式中替换 `logo` 使用。
-- navar为false时不展示
+- navbar为false时不展示
 - 可选值:
     - `null`: 禁用，会使用`logo`的值。
     - `具体的url`: 站内外资源的url都可以。
 
 #### logoAlt
 - 指定`Logo`图片的替代文字
-- navar为false时不展示
+- navbar为false时不展示
 - 可选值:
     - `null`: 禁用，会使用站点标题
     - `具体的文字`: 不用多说
 
 #### repo
 - 仓库链接
-- navar为false时不展示
+- navbar为false时不展示
 - 放在顶部导航栏的最后
 - 可选值: `具体的仓库地址`
 

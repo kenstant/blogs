@@ -1,11 +1,17 @@
 import { defineConfig } from 'vitepress'
 
+const base = '/blogs/';
+
 export default defineConfig({
     // 源文件目录（相对于项目根目录）
     srcDir: 'src',
     
     // 部署站点的基础配置
-    base: '/blogs/',
+    base: base,
+    
+    // 日志级别：'info' | 'warn' | 'error' | 'silent'
+    // 设置为 'warn' 可以减少控制台的配置层信息输出
+    logLevel: 'error',
     
     // 忽略构建时的死链检查（迁移初期更方便）
     ignoreDeadLinks: true,
@@ -26,9 +32,12 @@ export default defineConfig({
     themeConfig: {
         // 顶部导航栏关闭
         nav: [],
-        
+
         // 侧边栏关闭（空数组表示不显示侧边栏）
         sidebar: [],
+
+        // 目录，false则禁用，true在左侧，left也在左侧，全局禁用设置outline: false.
+        aside: true,
         
         // 是否显示搜索框
         search: {
@@ -36,12 +45,14 @@ export default defineConfig({
         },
         
         // 社交链接
-        socialLinks: [],
+        socialLinks: [
+            { icon: 'github', link: 'https://github.com/kenstant' },
+        ],
         
         // 页脚
         footer: {
-            message: '飞光飞光，劝尔一杯酒。',
-            copyright: 'Copyright © 2024'
+            message: "我与我周旋久，宁做我",
+            copyright: 'Copyright © 2025'
         },
         
         // 编辑链接（禁用）
@@ -62,33 +73,22 @@ export default defineConfig({
     
     // 头部配置
     head: [
-        ['link', { rel: 'icon', href: '/icons/favicon.ico' }],
-        ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/icons/favicon-16x16.png' }],
-        ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/icons/favicon-32x32.png' }],
-        ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/icons/apple-touch-icon.png' }],
-        ['link', { rel: 'manifest', href: '/icons/site.webmanifest' }]
+        ['link', { rel: 'icon', href: `${base}icons/favicon.ico` }],
+        ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${base}icons/favicon-16x16.png` }],
+        ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${base}icons/favicon-32x32.png` }],
+        ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${base}icons/apple-touch-icon.png` }],
+        ['link', { rel: 'manifest', href: `${base}icons/site.webmanifest` }]
     ],
     
-    // Markdown 配置 - 使其更接近 Typora 的解析效果
-    markdown: {
-        // 代码块行号
-        lineNumbers: true,
-        
-        // 图片配置
-        image: {
-            // 懒加载图片
-            lazyLoading: true
-        },
-        
-        // 自定义 markdown-it 配置
-        config: (md) => {
-            
-            // 注意：VitePress 默认已支持以下 GFM 特性：
-            // - 任务列表（- [ ] 和 - [x]）
-            // - 表格
-            // - 删除线（~~text~~）
-            // - 自动链接
-            // - 代码块语法高亮
+    
+    // Vite 配置 - 解决 Sass 弃用警告
+    vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler' // 使用新的 Sass API
+                }
+            }
         }
     }
 })
