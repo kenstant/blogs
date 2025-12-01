@@ -9,11 +9,11 @@ importers:
   .:
     devDependencies:
       sass:
-        specifier: ^1.81.0
-        version: 1.93.2
+        specifier: ^1.94.2
+        version: 1.94.2
       vitepress:
         specifier: 2.0.0-alpha.15
-        version: 2.0.0-alpha.15(postcss@8.5.6)(sass-embedded@1.81.0)(sass@1.93.2)
+        version: 2.0.0-alpha.15(postcss@8.5.6)(sass-embedded@1.81.0)(sass@1.94.2)
       vue:
         specifier: ^3.5.25
         version: 3.5.25
@@ -674,9 +674,6 @@ packages:
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
 
-  immutable@5.0.3:
-    resolution: {integrity: sha512-P8IdPQHq3lA1xVeBRi5VPqUm5HDgKnx0Ru51wZz5mjxHr5n3RWhjIpOFU7ybkUxfB+5IToy+OLaHYDBIWsv+uw==}
-
   immutable@5.1.4:
     resolution: {integrity: sha512-p6u1bG3YSnINT5RQmx/yRZBpenIl30kVxkTLDyHLIMk0gict704Q9n+thfDI7lTRm9vXdDYutVzXhzcThxTnXA==}
 
@@ -914,8 +911,8 @@ packages:
     engines: {node: '>=16.0.0'}
     hasBin: true
 
-  sass@1.93.2:
-    resolution: {integrity: sha512-t+YPtOQHpGW1QWsh1CHQ5cPIr9lbbGZLZnbihP/D/qZj/yuV68m8qarcV17nvkOX81BCrvzAlq2klCQFZghyTg==}
+  sass@1.94.2:
+    resolution: {integrity: sha512-N+7WK20/wOr7CzA2snJcUSSNTCzeCGUTFY3OgeQP3mZ1aj9NMQ0mSTXwlrnd89j33zzQJGqIN52GIOmYrfq46A==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -1361,10 +1358,10 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vitejs/plugin-vue@6.0.2(vite@7.2.4(sass-embedded@1.81.0)(sass@1.93.2))(vue@3.5.25)':
+  '@vitejs/plugin-vue@6.0.2(vite@7.2.4(sass-embedded@1.81.0)(sass@1.94.2))(vue@3.5.25)':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.50
-      vite: 7.2.4(sass-embedded@1.81.0)(sass@1.93.2)
+      vite: 7.2.4(sass-embedded@1.81.0)(sass@1.94.2)
       vue: 3.5.25
 
   '@vue/compiler-core@3.5.25':
@@ -1576,10 +1573,7 @@ snapshots:
 
   html-void-elements@3.0.0: {}
 
-  immutable@5.0.3: {}
-
-  immutable@5.1.4:
-    optional: true
+  immutable@5.1.4: {}
 
   is-extglob@2.1.1:
     optional: true
@@ -1809,10 +1803,10 @@ snapshots:
       sass-embedded-win32-x64: 1.81.0
     optional: true
 
-  sass@1.93.2:
+  sass@1.94.2:
     dependencies:
       chokidar: 4.0.1
-      immutable: 5.0.3
+      immutable: 5.1.4
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
@@ -1909,7 +1903,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@7.2.4(sass-embedded@1.81.0)(sass@1.93.2):
+  vite@7.2.4(sass-embedded@1.81.0)(sass@1.94.2):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
@@ -1919,10 +1913,10 @@ snapshots:
       tinyglobby: 0.2.15
     optionalDependencies:
       fsevents: 2.3.3
-      sass: 1.93.2
+      sass: 1.94.2
       sass-embedded: 1.81.0
 
-  vitepress@2.0.0-alpha.15(postcss@8.5.6)(sass-embedded@1.81.0)(sass@1.93.2):
+  vitepress@2.0.0-alpha.15(postcss@8.5.6)(sass-embedded@1.81.0)(sass@1.94.2):
     dependencies:
       '@docsearch/css': 4.3.2
       '@docsearch/js': 4.3.2
@@ -1931,7 +1925,7 @@ snapshots:
       '@shikijs/transformers': 3.15.0
       '@shikijs/types': 3.15.0
       '@types/markdown-it': 14.1.2
-      '@vitejs/plugin-vue': 6.0.2(vite@7.2.4(sass-embedded@1.81.0)(sass@1.93.2))(vue@3.5.25)
+      '@vitejs/plugin-vue': 6.0.2(vite@7.2.4(sass-embedded@1.81.0)(sass@1.94.2))(vue@3.5.25)
       '@vue/devtools-api': 8.0.5
       '@vue/shared': 3.5.25
       '@vueuse/core': 14.0.0(vue@3.5.25)
@@ -1940,7 +1934,7 @@ snapshots:
       mark.js: 8.11.1
       minisearch: 7.2.0
       shiki: 3.15.0
-      vite: 7.2.4(sass-embedded@1.81.0)(sass@1.93.2)
+      vite: 7.2.4(sass-embedded@1.81.0)(sass@1.94.2)
       vue: 3.5.25
     optionalDependencies:
       postcss: 8.5.6
