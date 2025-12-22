@@ -1,15 +1,26 @@
 <script setup>
 import { computed } from "vue";
-import { useData, useRouter, withBase } from "vitepress";
+import { useData, useRouter, useRoute, withBase } from "vitepress";
 
 const { frontmatter } = useData();
 const router = useRouter();
+const route = useRoute();
 
 const topic = computed(() => frontmatter.value.topic);
 const list = computed(() => frontmatter.value.list || []);
 
 const handleItemLink = (link) => {
-  if (link) {
+  if (!link) return;
+  
+  // 相对路径：基于当前路径拼接
+  if (!link.startsWith('/')) {
+    // 移除末尾的 /index.html 或者 /index
+    const currentDir = route.path.replace(/\/index\.html?$/, '').replace(/\/$/, '');
+    // 移除开头的 ./ 和 末尾的 .md 扩展名
+    const cleanLink = link.replace(/^\.\//, '').replace(/\.md$/, '');
+    router.go(`${currentDir}/${cleanLink}`);
+  } else {
+    // 绝对路径
     router.go(withBase(link));
   }
 };
