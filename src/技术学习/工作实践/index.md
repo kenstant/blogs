@@ -11,4 +11,6 @@ list:
     link: ./网络连接相关问题排查
   - title: Redis删除固定前缀key
     link: ./Redis批量删除固定前缀key
+  - title: 积分消费日志表数据迁移
+    link: ./积分消费日志表数据迁移
 ---
