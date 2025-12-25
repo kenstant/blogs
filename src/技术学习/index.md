@@ -9,5 +9,7 @@ list:
     link: /技术学习/搭建博客/
   - title: 工作实践
     link: /技术学习/工作实践/
+  - title: Java
+    link: /技术学习/Java/
 ---
 
