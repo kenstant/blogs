@@ -1,15 +1,14 @@
 ---
 layout: CustomTocLayout
+slug: tech-learning
 
 topic: 技术学习
 list:
-  - title: Web3
-    link: /技术学习/Web3/
   - title: 搭建博客
-    link: /技术学习/搭建博客/
+    link: ./build-blog/
   - title: 工作实践
-    link: /技术学习/工作实践/
+    link: ./practice/
   - title: Java
-    link: /技术学习/Java/
+    link: ./java/
 ---
 

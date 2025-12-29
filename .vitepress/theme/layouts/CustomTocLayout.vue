@@ -1,29 +1,13 @@
 <script setup>
 import { computed } from "vue";
-import { useData, useRouter, useRoute, withBase } from "vitepress";
+import { useData } from "vitepress";
+import { useHandleLink } from "../handleLink";
 
 const { frontmatter } = useData();
-const router = useRouter();
-const route = useRoute();
+const handleLink = useHandleLink();
 
 const topic = computed(() => frontmatter.value.topic);
 const list = computed(() => frontmatter.value.list || []);
-
-const handleItemLink = (link) => {
-  if (!link) return;
-  
-  // 相对路径：基于当前路径拼接
-  if (!link.startsWith('/')) {
-    // 移除末尾的 /index.html 或者 /index
-    const currentDir = route.path.replace(/\/index\.html?$/, '').replace(/\/$/, '');
-    // 移除开头的 ./ 和 末尾的 .md 扩展名
-    const cleanLink = link.replace(/^\.\//, '').replace(/\.md$/, '');
-    router.go(`${currentDir}/${cleanLink}`);
-  } else {
-    // 绝对路径
-    router.go(withBase(link));
-  }
-};
 </script>
 
 <template>
@@ -37,7 +21,7 @@ const handleItemLink = (link) => {
           class="custom-toc-item"
           v-for="(item, index) in list"
           :key="index"
-          @click="handleItemLink(item.link)"
+          @click="handleLink(item.link)"
       >
         <!-- 条目 -->
         <div class="custom-toc-item-title" v-if="item.title">{{ item.title }}</div>

@@ -1,5 +1,6 @@
 ---
 layout: CustomTocLayout
+slug: drafts
 
 topic: 草稿
 list: []

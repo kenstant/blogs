@@ -1,5 +1,6 @@
 ---
 layout: CustomTocLayout
+slug: practice
 
 topic: 工作实践
 list:

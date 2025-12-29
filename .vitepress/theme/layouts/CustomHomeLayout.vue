@@ -1,21 +1,14 @@
 <script setup>
 import { computed } from 'vue'
-import { useData, useRouter, withBase } from 'vitepress'
+import { useData } from 'vitepress'
+import { useHandleLink } from '../handleLink'
 
 const { frontmatter } = useData();
-const router = useRouter();
-
+const handleLink = useHandleLink();
 
 // 从 frontmatter 中获取配置
 const header = computed(() => frontmatter.value.header || {})
 const cards = computed(() => frontmatter.value.cards || [])
-
-// 处理卡片点击跳转
-const handleCardClick = (link) => {
-  if (link) {
-    router.go(withBase(link))
-  }
-}
 </script>
 
 <template>
@@ -34,7 +27,7 @@ const handleCardClick = (link) => {
           v-for="(card, index) in cards"
           :key="index"
           class="custom-feature-card"
-          @click="handleCardClick(card.link)"
+          @click="handleLink(card.link)"
         >
           <div class="custom-card-icon" v-if="card.icon">{{ card.icon }}</div>
           <h3 class="custom-card-title" v-if="card.title">{{ card.title }}</h3>

@@ -1,19 +1,24 @@
 import { defineConfig } from 'vitepress'
+import path from 'node:path'
+import { getAutoRewrites } from './utils/rewrites.js'
 
 const base = '/blogs/';
+const srcDir = 'src';
 
 export default defineConfig({
+    // 自动生成重写规则
+    rewrites: getAutoRewrites(path.resolve(process.cwd(), srcDir)),
+
     // 源文件目录（相对于项目根目录）
-    srcDir: 'src',
+    srcDir: srcDir,
     
     // 部署站点的基础配置
     base: base,
     
     // 日志级别：'info' | 'warn' | 'error' | 'silent'
-    // 设置为 'warn' 可以减少控制台的配置层信息输出
     logLevel: 'error',
     
-    // 忽略构建时的死链检查（迁移初期更方便）
+    // 忽略构建时的死链检查
     ignoreDeadLinks: true,
     
     // 站点语言
@@ -80,8 +85,7 @@ export default defineConfig({
         ['link', { rel: 'manifest', href: `${base}icons/site.webmanifest` }]
     ],
     
-    
-    // Vite 配置 - 解决 Sass 弃用警告
+    // Vite 配置
     vite: {
         css: {
             preprocessorOptions: {
@@ -92,5 +96,3 @@ export default defineConfig({
         }
     }
 })
-
-

@@ -1,6 +1,7 @@
 ---
 title: 搭建博客
 date: 2024-12-08 14:30:01
+slug: build-blog
 ---
 <br><br>
 

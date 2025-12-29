@@ -1,3 +1,7 @@
+---
+slug: jdk21-virtual-threads-intro
+---
+
 # JDK21虚拟线程入门
 
 ## 一、什么是虚拟线程？
