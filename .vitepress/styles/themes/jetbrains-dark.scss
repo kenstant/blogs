@@ -1,0 +1,174 @@
+@use "sass:color";
+@use "../variables" as v;
+
+// JetBrains Dark 深色主题 - 强调色用 var(--accent)，改 _variables 的 $accent-dark 即可
+html.dark {
+  --accent: #{v.$accent-dark};
+  --accent-border: #{v.$accent-dark-border};
+  --accent-hover: #{color.adjust(v.$accent-dark, $lightness: -6%)};
+
+  --vp-c-brand-1: #{v.$dark-brand};
+  --vp-c-brand-2: #{v.$dark-link};
+  --vp-c-brand-3: #{v.$dark-brand};
+  --vp-c-brand: #{v.$dark-brand};
+  --vp-c-bg: #{v.$dark-bg};
+  --vp-c-bg-alt: #{v.$dark-code-inline-bg};
+  --vp-c-bg-elv: #{v.$dark-sidebar-bg};
+  --vp-c-text-1: #{v.$dark-text};
+  --vp-c-text-2: #{v.$dark-text-muted};
+  --vp-c-divider: #{v.$dark-border};
+  --vp-c-gutter: #{v.$dark-border};
+
+  .VPContent {
+    background-color: v.$dark-bg;
+  }
+
+  .vp-doc {
+    color: v.$dark-text;
+    font-family: "PingFang SC", "Microsoft YaHei", "微软雅黑", system-ui, -apple-system,
+      "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  .vp-doc a {
+    color: v.$dark-link;
+    text-decoration: none;
+
+    &:hover {
+      color: #5c92ff;
+      text-decoration: underline;
+    }
+  }
+
+  .vp-doc .header-anchor {
+    color: var(--accent) !important;
+
+    &:hover {
+      color: var(--accent) !important;
+    }
+  }
+
+  .vp-doc h1,
+  .vp-doc h2,
+  .vp-doc h3,
+  .vp-doc h4,
+  .vp-doc h5,
+  .vp-doc h6 {
+    color: v.$dark-text;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .vp-doc h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    margin-bottom: 1em;
+    padding: 0.75em 0;
+    border-bottom: 2px solid v.$dark-border;
+  }
+
+  .vp-doc h2 {
+    font-size: 1.75em;
+    margin: 0.75em 0;
+    padding: 0.5em 0;
+    border-bottom: none;
+  }
+
+  .vp-doc h3 {
+    font-size: 1.5em;
+    margin: 0.75em 0;
+  }
+
+  .vp-doc h4 { font-size: 1.25em; margin: 0.5em 0; }
+  .vp-doc h5,
+  .vp-doc h6 {
+    font-size: 1em;
+    margin: 0.5em 0;
+    color: v.$dark-text-muted;
+  }
+
+  .vp-doc p,
+  .vp-doc blockquote,
+  .vp-doc ul,
+  .vp-doc ol,
+  .vp-doc table {
+    margin: 0.8em 0;
+  }
+
+  .vp-doc ul,
+  .vp-doc ol {
+    padding-left: 30px;
+  }
+
+  .vp-doc blockquote {
+    border-left: 4px solid #42454a;
+    background-color: v.$dark-code-inline-bg;
+    padding: 0.2em 15px;
+    color: v.$dark-text-muted;
+  }
+
+  .vp-doc hr {
+    height: 2px;
+    margin: 16px 0;
+    background-color: v.$dark-border;
+    border: 0;
+  }
+
+  .vp-doc code {
+    border: 1px solid #42454a;
+    background-color: v.$dark-code-inline-bg;
+    border-radius: 3px;
+    padding: 0 0.4em;
+    margin: 0 4px;
+    font-size: 0.9em;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, Menlo, Monaco, monospace;
+    color: v.$dark-text;
+  }
+
+  .vp-doc pre code {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  div[class*="language-"] {
+    border: 1px solid #42454a;
+    background-color: v.$dark-code-bg !important;
+    border-radius: 3px;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  }
+
+  .vp-doc table tr {
+    border: 1px solid #42454a;
+  }
+
+  .vp-doc table tr:nth-child(2n),
+  .vp-doc table thead {
+    background-color: v.$dark-code-inline-bg;
+  }
+
+  .vp-doc table th,
+  .vp-doc table td {
+    border: 1px solid #42454a;
+    padding: 6px 13px;
+    text-align: left;
+  }
+
+  .vp-doc table th {
+    font-weight: bold;
+  }
+
+  .vp-doc mark {
+    background-color: rgba(87, 168, 245, 0.25);
+    color: inherit;
+  }
+
+  // 侧边栏、导航与 VitePress 深色一致
+  .VPSidebar {
+    background-color: v.$dark-sidebar-bg;
+    border-right-color: v.$dark-border;
+  }
+}

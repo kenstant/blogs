@@ -1,180 +1,83 @@
-// 导入共享变量
 @use "variables";
 
-// ============================================
-// 响应式样式：仅在白天模式生效
-// ============================================
-// 以下样式只在 html:not(.dark) 时生效，切换为黑夜模式时会失效
-html:not(.dark) {
-
-  // VitePress 导航栏的边框与阴影（更明显）
-  .VPNavBar {
-    border-bottom: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  }
-
-  // 侧边栏的分隔更柔和
-  .VPSidebar {
-    border-right: 1px solid rgba(0, 0, 0, 0.06);
-  }
-
-  // 主要内容区域去除绿色边框，保持干净
-  .VPContent {
-    border-left: none;
-    border-right: none;
-  }
-
-  // 代码块的边框
-  div[class*="language-"] {
-    border: 1px solid variables.$primary-color;
-    border-radius: 4px;
-  }
-
-  // 引用块的边框
-  blockquote {
-    border-left: 4px solid variables.$primary-color;
-    background-color: rgba(0, 102, 68, 0.05);
-  }
-
-  // 链接颜色改为跟随正文，仅在悬停时以绿色下划线强调
-  a {
-    color: inherit;
-    
-    &:hover {
-      color: inherit;
-      text-decoration: underline;
-      text-decoration-color: variables.$primary-color;
-    }
-  }
-
-  // 表格边框
-  table {
-    border: 1px solid variables.$primary-color;
-    
-    th, td {
-      border: 1px solid variables.$primary-color;
-    }
-    
-    th {
-      background-color: rgba(0, 102, 68, 0.1);
-    }
-  }
-
-  // 代码内联样式
-  code {
-    color: variables.$primary-color-dark;
-    background-color: rgba(0, 102, 68, 0.1);
-  }
-
-  // 标题样式保持默认，不再加绿色边线
-  h1, h2, h3, h4, h5, h6 {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  // 分割线微弱绿色提示
-  hr {
-    border-color: rgba(0, 102, 68, 0.25);
-    border-width: 1px;
-  }
-}
-
+@use "themes/vue-light";
+@use "themes/jetbrains-dark";
 
 // ============================================
-// 固定样式：在所有主题模式下都生效
+// 全局布局（强调色由主题 --accent 提供，改 _variables 的 $accent-light / $accent-dark）
 // ============================================
-// 以下样式不随白天/黑夜主题切换而变化
-
-// VitePress 主题样式适配
-// 顶部导航：绿色背景 + 白色文字 + 下划线动效
-// 注意：使用 $primary-color，这是固定的品牌色，不会随主题变化
 .VPNavBar {
-  background-color: variables.$primary-color !important; // 固定品牌色，不随主题变化
+  background-color: var(--accent) !important;
   border-bottom: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .VPNavBar .title {
-  color: #ffffff;
+  color: #fff;
 }
 
 .VPNavBar .VPNavBarMenuLink,
 .VPNavBar .VPNavBarTitle,
 .VPNavBar a {
-  color: #ffffff !important;
+  color: #fff !important;
   font-weight: 600;
 }
 
-// 侧边栏与标题颜色在深绿色主题下的适配
 .VPSidebar {
   border-right: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-// VitePress 内容区域链接样式
-.VPContent .content a {
-  color: inherit;
+html.dark .VPSidebar {
+  border-right-color: variables.$dark-border;
 }
 
-.VPContent .content a:hover {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: variables.$primary-color;
-}
-
-// 适配 VitePress 的类名
-.vp-doc a {
-  color: inherit;
-}
-
-.vp-doc a:hover {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: variables.$primary-color;
-}
-
-// h2 标题前的分隔线颜色（全局设置，与主题色保持一致）
-// 注意：使用 $primary-color，这是固定的品牌色，不会随主题变化
-.vp-doc h2 {
-  border-top-color: variables.$primary-color !important;
+.VPContent {
+  border-left: none;
+  border-right: none;
 }
 
 // ============================================
-// 响应式样式：仅在白天模式生效
+// 首页相关
 // ============================================
-// 护眼优化：白天模式背景色和文字颜色
-html:not(.dark) {
-  // 使用更柔和的背景色，减少屏幕反光
-  .VPContent {
-    background-color: #fafafa;
-  }
-  
-  // 正文文字颜色调整为更柔和的深灰色
-  .vp-doc {
-    color: #2c3e50;
-  }
-  
-  // 首页容器背景色
-  .custom-home-container {
-    background-color: transparent;
-  }
-}
 
-// 隐藏首页的全局 VitePress footer
-// 当页面包含 custom-home-container 时，隐藏全局 footer
-
-// 确保首页内容居中
 body:has(.custom-home-container) .VPContent .content {
   text-align: center !important;
 }
 
-// 确保首页容器在内容区域中居中
 body:has(.custom-home-container) .vp-doc {
   max-width: none !important;
 }
 
-// 确保首页容器本身居中
 body:has(.custom-home-container) .custom-home-container {
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
+html:not(.dark) .custom-home-container {
+  background-color: transparent;
+}
+
+// 右侧 TOC 滚动条滑块与顶栏同色（var(--accent)）
+.VPDoc .aside-container {
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  scrollbar-color: var(--accent) transparent;
+}
+
+.VPDoc .aside-container::-webkit-scrollbar {
+  width: 6px;
+  display: block;
+}
+
+.VPDoc .aside-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.VPDoc .aside-container::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.VPDoc .aside-container::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}

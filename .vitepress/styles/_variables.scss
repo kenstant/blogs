@@ -1,24 +1,46 @@
 // ============================================
 // 全局主题变量 - 所有 SCSS 文件共享
 // ============================================
+// 强调色：只改下面 $accent-light / $accent-dark，顶栏、按钮、标题#、TOC、首页、右侧 TOC 滚动条会一起变
+// （主题里会导出为 --accent / --accent-border / --accent-hover，各组件用 var(--accent) 引用）
 
 // ============================================
-// 固定颜色（不随白天/黑夜主题切换变化）
+// 浅色主题（Vue 风格）- 白天模式
 // ============================================
-// 这些是品牌主题色，在所有模式下保持一致
+$primary-color: #42b983;                    // Vue 绿
+$primary-color-light: #52c993;
+$primary-color-dark: #359268;
+$light-primary: rgba(66, 185, 131, 0.15);
+$text-secondary: #777;
+$text-primary: #34495e;
+$border-light: #ddd;
+$blockquote-bg: rgba(66, 185, 131, 0.1);
+$code-color: #e96900;
+$code-bg: #f8f8f8;           // 行内代码
+$code-block-bg: #ececec;    // 代码块背景，与页面 #fafafa 区分
+$code-block-border: #d8d8d8; // 代码块边框
 
-// 主色调 - 品牌色，固定不变
-$primary-color: #006644;
+// ============================================
+// 深色主题：IDEA Darcula 风格
+// ============================================
+$dark-bg: #2b2b2b;              // Darcula 主背景（编辑器同款）
+$dark-sidebar-bg: #3c3f41;      // Darcula 侧栏/面板
+$dark-brand: #3574f0;
+$dark-link: #57a8f5;
+$dark-text: #a9b7c6;            // Darcula 默认文本
+$dark-text-muted: #808080;
+$dark-code-bg: #2b2b2b;
+$dark-code-inline-bg: #3c3f41;
+$dark-border: #45494a;
 
-// 主色调变体 - 固定不变
-$primary-color-light: #008855;  // 浅色变体
-$primary-color-dark: #004433;   // 深色变体
-
-// 浅色主题（用于边框、背景等）- 固定不变
-$light-primary: rgba(0, 102, 68, 0.15);
-
-// 文本颜色 - 固定不变（仅在白天模式下使用）
-$text-secondary: #666;
+// ============================================
+// 强调色（顶栏、按钮、标题#、TOC、首页、右侧 TOC 滚动条）
+// 只改下面两个色值，全站强调处都会变（通过主题内 --accent / --accent-border 引用）
+// ============================================
+$accent-light: #006644;       // 浅色模式强调色（原绿）
+$accent-light-border: rgba(0, 102, 68, 0.25);
+$accent-dark: #c96b1f;        // 深色模式强调色（偏暗橙）；可改为 #006644 恢复绿
+$accent-dark-border: rgba($accent-dark, 0.4);  // 由上面派生，改 $accent-dark 即可
 
 // ============================================
 // 响应式颜色说明

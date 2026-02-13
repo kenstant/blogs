@@ -1,8 +1,6 @@
-// 导入共享变量
 @use "variables";
 
-// 自定义首页样式 - 不覆盖默认主题
-// 自定义首页容器
+// 首页（强调色用 var(--accent) / var(--accent-border)，改 _variables 即可）
 .custom-home-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -11,16 +9,15 @@
   box-sizing: border-box;
 }
 
-// Hero 区域样式
 .custom-home-hero {
   text-align: center;
   margin-bottom: 60px;
   padding-bottom: 40px;
-  border-bottom: 2px solid rgba(0, 102, 68, 0.2);
+  border-bottom: 2px solid var(--accent-border);
 }
 
 .custom-home-name {
-  color: variables.$primary-color;
+  color: var(--accent);
   font-size: 42px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -34,7 +31,6 @@
   margin: 0;
 }
 
-// Features 卡片区域样式
 .custom-home-features {
   margin-bottom: 60px;
 }
@@ -49,7 +45,7 @@
 .custom-feature-card {
   padding: 32px 24px;
   background: #fff;
-  border: 2px solid variables.$light-primary;
+  border: 2px solid var(--accent-border);
   border-radius: 12px;
   text-decoration: none;
   color: inherit;
@@ -67,13 +63,13 @@
     top: 0;
     width: 4px;
     height: 0;
-    background: variables.$primary-color;
+    background: var(--accent);
     transition: height 0.3s ease;
   }
 
   &:hover {
-    border-color: variables.$primary-color;
-    box-shadow: 0 8px 24px variables.$light-primary;
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px var(--accent-border);
     transform: translateY(-4px);
 
     &::before {
@@ -92,7 +88,7 @@
   font-size: 24px;
   font-weight: 600;
   margin: 0 0 12px 0;
-  color: variables.$primary-color;
+  color: var(--accent);
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -104,11 +100,10 @@
   line-height: 1.6;
 }
 
-// 深色模式适配
+// 深色模式仅改背景与次要文字，强调色已由 var(--accent) 随主题切换
 html.dark {
   .custom-feature-card {
     background: var(--vp-c-bg-alt);
-    border-color: rgba(255, 255, 255, 0.1);
   }
 
   .custom-home-text,

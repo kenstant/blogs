@@ -1,36 +1,31 @@
-@use "sass:color";
 @use "variables";
 
-// 返回按钮样式
-// 悬浮返回按钮容器
+// 返回按钮（颜色用 var(--accent)，与顶栏一致）
 .back-button-floating {
   position: fixed;
-  // 参考页脚 prev/next 的位置，放在右下角
-  // 页脚在内容区域底部，我们放在右下角固定位置
   bottom: 32px;
   right: 32px;
   z-index: 100;
-  pointer-events: none; // 让容器不阻挡点击，只有按钮本身可点击
-  
+  pointer-events: none;
+
   @media (max-width: 768px) {
     bottom: 24px;
     right: 24px;
   }
 }
 
-// 悬浮球
 .floating-ball {
-  pointer-events: auto; // 恢复按钮的点击事件
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: variables.$primary-color;
+  background: var(--accent);
   color: white;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 102, 68, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -73,14 +68,14 @@
   }
   
   &:hover {
-    background: color.adjust(variables.$primary-color, $lightness: -5%);
-    box-shadow: 0 6px 16px rgba(0, 102, 68, 0.4);
+    background: var(--accent-hover);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     transform: translateY(-2px);
   }
-  
+
   &:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 102, 68, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -105,16 +100,12 @@
   }
 }
 
-// 深色模式适配
-html.dark {
-  .floating-ball {
-    background: var(--vp-c-brand);
-    box-shadow: 0 4px 12px rgba(0, 102, 68, 0.4);
-    
-    &:hover {
-      background: var(--vp-c-brand-dark);
-      box-shadow: 0 6px 16px rgba(0, 102, 68, 0.5);
-    }
+// 深色模式仅调整阴影，颜色已由 var(--accent) 随主题切换
+html.dark .floating-ball {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
   }
 }
 
