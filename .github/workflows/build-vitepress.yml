@@ -25,8 +25,8 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          # 选择要使用的 pnpm 版本（使用最新稳定版）
-          version: 9
+          # 选择要使用的 pnpm 版本（与本地一致，减少 lockfile 差异）
+          version: 10
           # 使用 pnpm 安装依赖
           run_install: true
 
