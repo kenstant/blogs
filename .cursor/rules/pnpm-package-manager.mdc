@@ -1,0 +1,32 @@
+---
+description: 本项目统一使用 pnpm 管理依赖与运行脚本，禁止使用 npm
+alwaysApply: true
+---
+
+# 包管理器：pnpm
+
+本仓库以 **pnpm** 为唯一推荐的 Node 包管理器。在终端命令、文档说明和向协作者给出的示例中，一律使用 pnpm，不要使用 npm 或 yarn。
+
+## 必须遵守
+
+- 安装依赖：`pnpm install`（不要用 `npm install`）
+- 添加依赖：`pnpm add <pkg>` / `pnpm add -D <pkg>`（不要用 `npm install <pkg>`）
+- 移除依赖：`pnpm remove <pkg>`
+- 执行脚本：`pnpm run <script>` 或 `pnpm <script>`（与 `package.json` 中 `scripts` 一致）
+- 需要一次性执行包内 CLI 时：优先 `pnpm exec <cmd>` 或 `pnpm dlx <pkg>`（不要用 `npx`）
+
+## 对 AI / 助手的约束
+
+- 在仓库内建议或执行安装、升级、运行脚本类命令时，**默认使用 pnpm**。
+- 若用户或文档中出现 `npm install`、`npx`，应改为等价的 pnpm 写法后再执行或展示。
+
+## 对照示例
+
+| 不要用 | 请用 |
+|--------|------|
+| `npm install` | `pnpm install` |
+| `npm i lodash` | `pnpm add lodash` |
+| `npm run docs:dev` | `pnpm run docs:dev` |
+| `npx vitepress dev` | `pnpm exec vitepress dev` 或 `pnpm run docs:dev` |
+
+若本机未安装 pnpm，可先安装：`npm install -g pnpm`（仅此一步可用 npm），或使用 Corepack：`corepack enable && corepack prepare pnpm@latest --activate`。
