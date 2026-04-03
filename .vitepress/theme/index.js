@@ -7,6 +7,7 @@ import CustomHomeLayout from './layouts/CustomHomeLayout.vue'
 import CustomTocLayout from './layouts/CustomTocLayout.vue'
 // 导入返回按钮组件
 import BackButton from './components/BackButton.vue'
+import Mermaid from 'vitepress-mermaid/Mermaid.vue'
 // 导入全局样式文件
 import '../styles/index.scss'
 
@@ -38,6 +39,7 @@ export default {
         // 注册后，就可以在 frontmatter 中使用 layout: CustomHomeLayout 来使用这个布局
         app.component('CustomHomeLayout', CustomHomeLayout)
         app.component('CustomTocLayout', CustomTocLayout)
+        app.component('Mermaid', Mermaid)
 
         // 你可以在这里注册更多组件，例如：
         // app.component('MyComponent', MyComponent)

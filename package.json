@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "docs:dev": "vitepress dev",
+    "docs:dev": "vitepress dev --port 5173",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
@@ -11,8 +11,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@braintree/sanitize-url": "^7.1.2",
+    "cytoscape": "^3.33.1",
+    "cytoscape-cose-bilkent": "^4.1.0",
+    "dayjs": "^1.11.20",
+    "debug": "^4.4.3",
+    "mermaid": "^11.14.0",
     "sass": "^1.94.2",
     "vitepress": "2.0.0-alpha.16",
+    "vitepress-mermaid": "^2.1.2",
     "vue": "^3.5.25"
   }
 }

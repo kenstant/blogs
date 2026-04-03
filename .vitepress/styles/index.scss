@@ -81,3 +81,32 @@ html:not(.dark) .custom-home-container {
 .VPDoc .aside-container::-webkit-scrollbar-thumb:hover {
   background: var(--accent-hover);
 }
+
+// ```mermaid-doc：上为源码、下为渲染图（```mermaid 仍为仅图）
+.mermaid-doc-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+  margin: 1rem 0;
+}
+
+.mermaid-doc-pair__source {
+  min-width: 0;
+
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+.mermaid-doc-pair__diagram {
+  min-width: 0;
+}
+
+.mermaid-doc-pair__caption {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+}

@@ -10,12 +10,14 @@ slug: mermaid-syntax-intro
 
 ## 在 Markdown 里怎么用
 
-在支持 Mermaid 的编辑器或站点中，使用带 `mermaid` 语言标记的代码块即可，例如本博客已通过 VitePress 插件渲染下图：
+与 GitHub、多数编辑器一致，**` ```mermaid `** 代码块通常**只渲染成图**，不重复展示源码：
 
 ```mermaid
 flowchart LR
   A[写文本] --> B[渲染成图]
 ```
+
+本博客在需要「对照源码」时，另约定一种围栏语言 **` ```mermaid-doc `**：会先显示与 `mermaid` 相同的高亮源码，再在下方显示渲染结果。下文语法示例均使用 `mermaid-doc`。
 
 在线试写可使用 [Mermaid Live Editor](https://mermaid.live/)。
 
@@ -34,7 +36,7 @@ flowchart LR
 
 ### 节点形状与连线
 
-```mermaid
+```mermaid-doc
 flowchart TD
   id1[矩形]
   id2(圆角矩形)
@@ -50,7 +52,7 @@ flowchart TD
 
 ### 子图（subgraph）
 
-```mermaid
+```mermaid-doc
 flowchart TB
   subgraph 前端
     A[页面] --> B[请求]
@@ -67,7 +69,7 @@ flowchart TB
 
 描述参与者之间**按时间**的交互：
 
-```mermaid
+```mermaid-doc
 sequenceDiagram
   participant 用户
   participant 前端
@@ -88,7 +90,7 @@ sequenceDiagram
 
 适合表达面向对象结构：
 
-```mermaid
+```mermaid-doc
 classDiagram
   class Animal {
     +String name
@@ -108,7 +110,7 @@ classDiagram
 
 适合订单、工单等**状态迁移**：
 
-```mermaid
+```mermaid-doc
 stateDiagram-v2
   [*] --> 待支付
   待支付 --> 已支付: 支付成功
@@ -123,7 +125,7 @@ stateDiagram-v2
 
 快速画表之间的实体关系：
 
-```mermaid
+```mermaid-doc
 erDiagram
   USER ||--o{ ORDER : places
   USER {
@@ -142,7 +144,7 @@ erDiagram
 
 项目排期、里程碑：
 
-```mermaid
+```mermaid-doc
 gantt
   title 示例迭代
   dateFormat YYYY-MM-DD
@@ -157,7 +159,7 @@ gantt
 
 ## 7. 饼图（pie）
 
-```mermaid
+```mermaid-doc
 pie title 时间分配（示例）
   "开发" : 50
   "会议" : 25
@@ -170,7 +172,7 @@ pie title 时间分配（示例）
 
 较新的 Mermaid 版本支持（若本地不渲染，多半是版本或环境未开启）：
 
-```mermaid
+```mermaid-doc
 mindmap
   root((Mermaid))
     流程图

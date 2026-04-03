@@ -1,9 +1,73 @@
 import { defineConfig } from 'vitepress'
+import { MermaidMarkdown } from 'vitepress-mermaid'
 import path from 'node:path'
 import { getAutoRewrites } from './utils/rewrites.js'
 
 const base = '/blogs/';
 const srcDir = 'src';
+
+const MERMAID_VIRTUAL = 'virtual:mermaid-config'
+const MERMAID_VIRTUAL_RESOLVED = '\0' + MERMAID_VIRTUAL
+
+/**
+ * ```mermaid：仅渲染图（与常见 Markdown 里 Mermaid  fenced code 行为一致）。
+ * ```mermaid-doc：本站扩展，教学用——先 Shiki 高亮源码，再渲染图（纵向排列）。
+ * ```mmd：仅源码高亮、不渲染（vitepress-mermaid 内置）。
+ */
+function mermaidDocMarkdown(md) {
+    const defaultFence = md.renderer.rules.fence.bind(md.renderer.rules)
+    MermaidMarkdown(md)
+    const mermaidFence = md.renderer.rules.fence.bind(md.renderer.rules)
+
+    const diagramOnly = (id, graphEncoded) => `<Suspense>
+<template #default>
+<Mermaid id="${id}" class="mermaid" graph="${graphEncoded}"></Mermaid>
+</template>
+<template #fallback>Loading...</template>
+</Suspense>`
+
+    md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        const token = tokens[idx]
+        const info = token.info.trim()
+
+        if (info === 'mermaid-doc') {
+            const savedInfo = token.info
+            token.info = 'mermaid'
+            const codeHtml = defaultFence(tokens, idx, options, env, self)
+            token.info = savedInfo
+            const graphEncoded = encodeURIComponent(token.content)
+            return `<div class="mermaid-doc-pair">
+<div class="mermaid-doc-pair__source">${codeHtml}</div>
+<div class="mermaid-doc-pair__diagram">
+<p class="mermaid-doc-pair__caption">渲染结果</p>
+${diagramOnly(`mermaid-doc-${idx}`, graphEncoded)}
+</div>
+</div>`
+        }
+
+        return mermaidFence(tokens, idx, options, env, self)
+    }
+}
+
+/** 仅提供 Mermaid.vue 依赖的 virtual:mermaid-config，不调用 MermaidPlugin（其会 transform app/index.js）。 */
+function mermaidConfigVirtualPlugin(userConfig = {}) {
+    const config = {
+        securityLevel: 'loose',
+        startOnLoad: false,
+        ...userConfig,
+    }
+    return {
+        name: 'vitepress-mermaid-config-virtual',
+        resolveId(id) {
+            if (id === MERMAID_VIRTUAL) return MERMAID_VIRTUAL_RESOLVED
+        },
+        load(id) {
+            if (id === MERMAID_VIRTUAL_RESOLVED) {
+                return `export default ${JSON.stringify(config)};`
+            }
+        },
+    }
+}
 
 export default defineConfig({
     // 自动生成重写规则
@@ -32,6 +96,12 @@ export default defineConfig({
     
     // 最后更新时间
     lastUpdated: true,
+
+    markdown: {
+        config(md) {
+            mermaidDocMarkdown(md)
+        },
+    },
     
     // 主题配置
     themeConfig: {
@@ -87,6 +157,35 @@ export default defineConfig({
     
     // Vite 配置
     vite: {
+        plugins: [
+            mermaidConfigVirtualPlugin({
+                securityLevel: 'loose',
+                startOnLoad: false,
+            }),
+        ],
+        optimizeDeps: {
+            // Mermaid / Langium / vscode-jsonrpc：避免浏览器里直接吃到 CJS，导致 default / 命名导出不匹配
+            include: [
+                '@braintree/sanitize-url',
+                '@mermaid-js/parser',
+                'cytoscape',
+                'cytoscape-cose-bilkent',
+                'dayjs',
+                'debug',
+                'langium',
+                'mermaid',
+                'vscode-jsonrpc',
+            ],
+        },
+        resolve: {
+            alias: {
+                'dayjs/plugin/advancedFormat.js': 'dayjs/esm/plugin/advancedFormat',
+                'dayjs/plugin/customParseFormat.js': 'dayjs/esm/plugin/customParseFormat',
+                'dayjs/plugin/duration.js': 'dayjs/esm/plugin/duration',
+                'dayjs/plugin/isoWeek.js': 'dayjs/esm/plugin/isoWeek',
+                'cytoscape/dist/cytoscape.umd.js': 'cytoscape/dist/cytoscape.esm.js',
+            },
+        },
         css: {
             preprocessorOptions: {
                 scss: {
