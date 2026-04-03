@@ -10,5 +10,7 @@ list:
     link: ./practice/
   - title: Java
     link: ./java/
+  - title: Mermaid
+    link: ./mermaid/
 ---
 
